@@ -10,7 +10,7 @@ docker run -d \
     -p 8001:80 \
     --restart=always \
     --name=webdav \
-    ugeek/webdav:amd64
+    duxlong/webdav
 
 ```
 
