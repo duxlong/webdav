@@ -1,5 +1,7 @@
 FROM alpine
 
+COPY webdav.conf /etc/nginx/conf.d/webdav.conf
+
 RUN apk update && \
     apk add --no-cache gcc make openssl-dev zlib-dev perl-dev pcre-dev libc-dev && \
     cd /tmp && \
