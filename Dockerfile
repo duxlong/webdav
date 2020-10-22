@@ -5,10 +5,12 @@ COPY nginx.conf /opt/nginx/conf/nginx.conf
 RUN apk update && \
     apk add --no-cache gcc make openssl-dev zlib-dev perl-dev pcre-dev libc-dev && \
     cd /tmp && \
-    wget https://github.com/nginx/nginx/archive/master.zip && \
-    unzip master.zip && \
+    wget https://github.com/nginx/nginx/archive/master.zip -O nginx.zip && \
+    unzip nginx.zip && \
+    wget https://github.com/arut/nginx-dav-ext-module/archive/master.zip -O dav-ext-module.zip && \
+    unzip dav-ext-module.zip && \
     cd nginx-master && \
-    ./auto/configure --prefix=/opt/nginx --with-http_dav_module && \
+    ./auto/configure --prefix=/opt/nginx --with-http_dav_module --add-module=/tmp/nginx-dav-ext-module && \
     make && make install && \
     cd /root && \
     apk del gcc make openssl-dev zlib-dev perl-dev pcre-dev libc-dev && \
