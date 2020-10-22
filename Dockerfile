@@ -8,7 +8,6 @@ RUN apk update && \
     wget https://github.com/nginx/nginx/archive/master.zip && \
     unzip master.zip && \
     cd nginx-master && \
-    cd auto && \
     ./auto/configure --prefix=/opt/nginx --with-http_dav_module && \
     make && make install && \
     cd /root && \
