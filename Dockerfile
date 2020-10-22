@@ -18,7 +18,7 @@ RUN apk update && \
     rm -rf /var/cache/apk/* && \
     rm -rf /tmp/*
 
-VOLUME /media
+VOLUME /data
 
 EXPOSE 80
 
