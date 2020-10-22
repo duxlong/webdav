@@ -1,6 +1,6 @@
 FROM alpine
 
-COPY webdav.conf /opt/nginx/conf/nginx.conf
+COPY nginx.conf /opt/nginx/conf/nginx.conf
 
 RUN apk update && \
     apk add --no-cache gcc make openssl-dev zlib-dev perl-dev pcre-dev libc-dev && \
@@ -21,7 +21,7 @@ EXPOSE 80
 
 CMD /opt/nginx/sbin/nginx -g "daemon off;"
 
-# COPY webdav.conf /opt/nginx/conf/nginx.conf
+# COPY nginx.conf /opt/nginx/conf/nginx.conf
 # docker hub 可以直接复制 github 中的代码
 
 # apk add --no-cache gcc make openssl-dev zlib-dev perl-dev pcre-dev libc-dev
