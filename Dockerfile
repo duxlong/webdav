@@ -1,6 +1,10 @@
 FROM alpine
 
+ENV USERNAME PASSWORD
+
 COPY nginx.conf /opt/nginx/conf/nginx.conf
+
+COPY entrypoint.sh /
 
 RUN apk update && \
     apk add --no-cache pcre libxml2 libxslt && \
@@ -22,7 +26,7 @@ VOLUME /data
 
 EXPOSE 80
 
-CMD /opt/nginx/sbin/nginx -g "daemon off;"
+CMD /entrypoint.sh && /opt/nginx/sbin/nginx -g "daemon off;"
 
 # COPY nginx.conf /opt/nginx/conf/nginx.conf
 # docker hub 可以直接复制 github 中的代码
@@ -45,6 +49,7 @@ CMD /opt/nginx/sbin/nginx -g "daemon off;"
 # apk del gcc make libc-dev pcre-dev zlib-dev libxml2-dev libxslt-dev
 # 卸载编译工具，缩减镜像体积
 
-# CMD /opt/nginx/sbin/nginx -g "daemon off;"
+# CMD /entrypoint.sh && /opt/nginx/sbin/nginx -g "daemon off;"
+# 执行 entrypoint.sh 判断是单用户模式还是多用户模式
 # 源码编译安装的 nginx 未加入环境变量，所以用绝对路径运行 nginx
 # nginx 关闭后台运行，才能在 docker 中运行
