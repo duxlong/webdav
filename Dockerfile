@@ -8,6 +8,7 @@ COPY entrypoint.sh /
 
 RUN apk update && \
     apk add --no-cache pcre libxml2 libxslt && \
+    apk add --no-cache apache2-utils && \
     apk add --no-cache gcc make libc-dev pcre-dev zlib-dev libxml2-dev libxslt-dev && \
     cd /tmp && \
     wget https://github.com/nginx/nginx/archive/master.zip -O nginx.zip && \
@@ -30,6 +31,9 @@ CMD /entrypoint.sh && /opt/nginx/sbin/nginx -g "daemon off;"
 
 # COPY nginx.conf /opt/nginx/conf/nginx.conf
 # docker hub 可以直接复制 github 中的代码
+
+# apk add --no-cache apache2-utils
+# 支持 htpasswd 命令，单用户模式创建密码用
 
 # apk add --no-cache pcre libxml2 libxslt
 # 安装 nginx 运行所必须的库
