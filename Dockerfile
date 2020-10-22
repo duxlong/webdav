@@ -1,6 +1,6 @@
 FROM alpine
 
-ENV USERNAME PASSWORD
+ENV USERNAME="" PASSWORD=""
 
 COPY nginx.conf /opt/nginx/conf/nginx.conf
 
