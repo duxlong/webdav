@@ -19,6 +19,7 @@ RUN apk update && \
     ./auto/configure --prefix=/opt/nginx --with-http_dav_module --add-module=/tmp/nginx-dav-ext-module-master && \
     make && make install && \
     cd /root && \
+    chmod +x /entrypoint.sh && \
     apk del gcc make libc-dev pcre-dev zlib-dev libxml2-dev libxslt-dev && \
     rm -rf /var/cache/apk/* && \
     rm -rf /tmp/*
