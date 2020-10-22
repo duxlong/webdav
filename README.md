@@ -38,8 +38,8 @@ docker run -d \
     -v /srv/dev-disk-by-label-3T/photo:/data/photo \
     -v /srv/dev-disk-by-label-3T/video:/data/video \
     -v /srv/dev-disk-by-label-3T/zoo:/data/zoo \
-    -e USERNAME xxx \
-    -e PASSWORD xxx \
+    -e USERNAME=xxx \
+    -e PASSWORD=xxx \
     -p 8001:80 \
     --restart=unless-stopped \
     --name=webdav \
